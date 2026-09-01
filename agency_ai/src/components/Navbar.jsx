@@ -1,10 +1,12 @@
-
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import logo_dark from "../assets/logo_dark.svg";
 import arrow_icon from "../assets/arrow_icon.svg";
+import close_icon from "../assets/close_icon.svg";
 
 const Navbar = ({ theme, setTheme }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <nav className="flex items-center justify-between sticky top-0 z-20 py-4 px-4 sm:px-12 lg:px-24 xl:px-14 backdrop-blur-xl bg-white/50 dark:bg-gray-900/70 font-medium">
 
@@ -19,55 +21,40 @@ const Navbar = ({ theme, setTheme }) => {
 
       {/* Navigation Links */}
       <div
-        className="
+        className={`
+          relative
           flex items-center gap-8
           text-gray-700 dark:text-white
           text-sm
-          
           max-sm:fixed
           max-sm:top-0
           max-sm:right-0
-          max-sm:w-60
           max-sm:min-h-screen
           max-sm:flex-col
-          max-sm:items-start
+          max-sm:items-start  
           max-sm:gap-6
           max-sm:pt-24
-          max-sm:pl-8
           max-sm:bg-primary
           max-sm:text-white
-        "
+          transition-all duration-300
+          ${!sidebarOpen ? "max-sm:w-0 overflow-hidden" : "max-sm:w-60 max-sm:pl-10"}
+        `}
       >
-        <a
-          href="#home"
-          className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-        >
-          Home
-        </a>
+        {/* Close Icon (Mobile) */}
+        <img
+          src={close_icon}
+          alt="Close"
+          className="w-5 absolute right-4 top-4 sm:hidden cursor-pointer"
+          onClick={() => setSidebarOpen(false)}
+        />
 
-        <a
-          href="#services"
-          className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-        >
-          Services
-        </a>
-
-        <a
-          href="#our-work"
-          className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-        >
-          Our Work
-        </a>
-
-        <a
-          href="#contact-us"
-          className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-        >
-          Contact Us
-        </a>
+        <a onClick={()=>setSidebarOpen(false)} href="#home" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+        <a onClick={()=>setSidebarOpen(false)} href="#services" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Services</a>
+        <a onClick={()=>setSidebarOpen(false)} href="#our-work" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Our Work</a>
+        <a onClick={()=>setSidebarOpen(false)} href="#contact-us" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact Us</a>
       </div>
 
-      {/* Connect Button */}
+      {/* Connect Button (Desktop) */}
       <a
         href="#contact-us"
         className="
@@ -85,16 +72,20 @@ const Navbar = ({ theme, setTheme }) => {
         "
       >
         Connect
-        <img
-          src={arrow_icon}
-          width={14}
-          alt="Arrow"
-        />
+        <img src={arrow_icon} width={14} alt="Arrow" />
       </a>
 
+      {/* Hamburger Menu (Mobile) */}
+      <button
+        className="sm:hidden flex flex-col gap-1 cursor-pointer"
+        onClick={() => setSidebarOpen(true)}
+      >
+        <span className="w-6 h-0.5 bg-gray-700 dark:bg-white"></span>
+        <span className="w-6 h-0.5 bg-gray-700 dark:bg-white"></span>
+        <span className="w-6 h-0.5 bg-gray-700 dark:bg-white"></span>
+      </button>
     </nav>
   );
 };
 
 export default Navbar;
-
