@@ -3,6 +3,9 @@ import logo from "../assets/logo.svg";
 import logo_dark from "../assets/logo_dark.svg";
 import arrow_icon from "../assets/arrow_icon.svg";
 import close_icon from "../assets/close_icon.svg";
+import menu_icon from "../assets/menu_icon.svg";
+import menu_icon_dark from "../assets/menu_icon_dark.svg";
+import ThemeToggleButton from "./ThemeToggleButton";
 
 const Navbar = ({ theme, setTheme }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -10,7 +13,6 @@ const Navbar = ({ theme, setTheme }) => {
   return (
     <nav className="flex items-center justify-between sticky top-0 z-20 py-4 px-4 sm:px-12 lg:px-24 xl:px-14 backdrop-blur-xl bg-white/50 dark:bg-gray-900/70 font-medium">
 
-      {/* Logo */}
       <a href="#home">
         <img
           src={theme === "dark" ? logo_dark : logo}
@@ -19,7 +21,6 @@ const Navbar = ({ theme, setTheme }) => {
         />
       </a>
 
-      {/* Navigation Links */}
       <div
         className={`
           relative
@@ -40,7 +41,6 @@ const Navbar = ({ theme, setTheme }) => {
           ${!sidebarOpen ? "max-sm:w-0 overflow-hidden" : "max-sm:w-60 max-sm:pl-10"}
         `}
       >
-        {/* Close Icon (Mobile) */}
         <img
           src={close_icon}
           alt="Close"
@@ -48,13 +48,21 @@ const Navbar = ({ theme, setTheme }) => {
           onClick={() => setSidebarOpen(false)}
         />
 
-        <a onClick={()=>setSidebarOpen(false)} href="#home" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
-        <a onClick={()=>setSidebarOpen(false)} href="#services" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Services</a>
-        <a onClick={()=>setSidebarOpen(false)} href="#our-work" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Our Work</a>
-        <a onClick={()=>setSidebarOpen(false)} href="#contact-us" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact Us</a>
+        <a onClick={() => setSidebarOpen(false)} href="#home" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+        <a onClick={() => setSidebarOpen(false)} href="#services" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Services</a>
+        <a onClick={() => setSidebarOpen(false)} href="#our-work" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Our Work</a>
+        <a onClick={() => setSidebarOpen(false)} href="#contact-us" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact Us</a>
       </div>
 
-      {/* Connect Button (Desktop) */}
+      <ThemeToggleButton theme={theme} setTheme={setTheme} />
+
+      <img
+        src={theme === "dark" ? menu_icon_dark : menu_icon}
+        alt="Menu"
+        className="w-8 sm:hidden cursor-pointer"
+        onClick={() => setSidebarOpen(true)}
+      />
+
       <a
         href="#contact-us"
         className="
@@ -74,16 +82,6 @@ const Navbar = ({ theme, setTheme }) => {
         Connect
         <img src={arrow_icon} width={14} alt="Arrow" />
       </a>
-
-      {/* Hamburger Menu (Mobile) */}
-      <button
-        className="sm:hidden flex flex-col gap-1 cursor-pointer"
-        onClick={() => setSidebarOpen(true)}
-      >
-        <span className="w-6 h-0.5 bg-gray-700 dark:bg-white"></span>
-        <span className="w-6 h-0.5 bg-gray-700 dark:bg-white"></span>
-        <span className="w-6 h-0.5 bg-gray-700 dark:bg-white"></span>
-      </button>
     </nav>
   );
 };
