@@ -11,7 +11,7 @@ const Navbar = ({ theme, setTheme }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between sticky top-0 z-20 py-4 px-4 sm:px-12 lg:px-24 xl:px-14 backdrop-blur-xl bg-white/50 dark:bg-gray-900/70 font-medium">
+    <nav className="flex items-center justify-between sticky top-0 z-20 py-4 px-4 sm:px-12 lg:px-24 xl:px-14 backdrop-blur-xl bg-blue-900  dark:bg-gray-900/70 font-medium">
 
       <a href="#home">
         <img
@@ -48,10 +48,10 @@ const Navbar = ({ theme, setTheme }) => {
           onClick={() => setSidebarOpen(false)}
         />
 
-        <a onClick={() => setSidebarOpen(false)} href="#home" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
-        <a onClick={() => setSidebarOpen(false)} href="#services" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Services</a>
-        <a onClick={() => setSidebarOpen(false)} href="#our-work" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Our Work</a>
-        <a onClick={() => setSidebarOpen(false)} href="#contact-us" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact Us</a>
+        <a onClick={() => setSidebarOpen(false)} href="#home" className="text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+        <a onClick={() => setSidebarOpen(false)} href="#services" className="text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Services</a>
+        <a onClick={() => setSidebarOpen(false)} href="#our-work" className="text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Our Work</a>
+        <a onClick={() => setSidebarOpen(false)} href="#contact-us" className="text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact Us</a>
       </div>
 
       <ThemeToggleButton theme={theme} setTheme={setTheme} />
