@@ -6,6 +6,7 @@ import close_icon from "../assets/close_icon.svg";
 import menu_icon from "../assets/menu_icon.svg";
 import menu_icon_dark from "../assets/menu_icon_dark.svg";
 import ThemeToggleButton from "./ThemeToggleButton";
+import {motion} from "motion/react"
 
 const Navbar = ({ theme, setTheme }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
