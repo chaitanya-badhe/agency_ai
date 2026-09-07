@@ -98,3 +98,15 @@ const App = () => {
 };
 
 export default App;
+
+
+
+
+
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const dotRef = useRef(null);
+  const outlineRef = useRef(null);
