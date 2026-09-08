@@ -6,13 +6,18 @@ import close_icon from "../assets/close_icon.svg";
 import menu_icon from "../assets/menu_icon.svg";
 import menu_icon_dark from "../assets/menu_icon_dark.svg";
 import ThemeToggleButton from "./ThemeToggleButton";
-import {motion} from "motion/react"
+import {easeOut, motion} from "motion/react"
 
 const Navbar = ({ theme, setTheme }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between sticky top-0 z-20 py-4 px-4 sm:px-12 lg:px-24 xl:px-14 backdrop-blur-xl bg-blue-900  dark:bg-gray-900/70 font-medium">
+    
+    <motion.nav
+    initial ={{opacity:0 ,y:-50}}
+    animate={{opacity:1,y:0}}
+    transition={{duration:0.6 , ease:easeOut}}
+    className="flex items-center justify-between sticky top-0 z-20 py-4 px-4 sm:px-12 lg:px-24 xl:px-14 backdrop-blur-xl bg-blue-900  dark:bg-gray-900/70 font-medium">
 
       <a href="#home">
         <img
@@ -83,7 +88,7 @@ const Navbar = ({ theme, setTheme }) => {
         Connect
         <img src={arrow_icon} width={14} alt="Arrow" />
       </a>
-    </nav>
+    </motion.nav>
   );
 };
 
