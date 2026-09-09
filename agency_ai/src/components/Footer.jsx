@@ -1,14 +1,26 @@
 import React from 'react'
 import assets from '../assets/assets'
+import {easeOut, motion} from "motion/react"
 
 const Footer = () => {
   return (
-    <div className='bg-slate-50 dark:bg-gray-900 pt-10 sm:pt-10 mt-20 sm:mt-40'>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className='bg-slate-50 dark:bg-gray-900 pt-10 sm:pt-10 mt-20 sm:mt-40'
+    >
       <div className='max-w-[1500px] mx-auto px-4 sm:px-10 lg:px-0'>
 
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20'>
 
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             <img
               src={assets.logo}
               className='w-32 sm:w-44'
@@ -44,9 +56,15 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div className='text-gray-600 dark:text-gray-400'>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className='text-gray-600 dark:text-gray-400'
+          >
             <h3 className='font-semibold'>
               Subscribe to our newsletter
             </h3>
@@ -66,11 +84,17 @@ const Footer = () => {
                 Subscribe
               </button>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
-        <div className='border-t border-gray-300 dark:border-gray-700 mt-8 py-8 flex justify-between items-center'>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className='border-t border-gray-300 dark:border-gray-700 mt-8 py-8 flex justify-between items-center'
+        >
           <p className='text-gray-600 dark:text-gray-400'>
             Copyright 2025 © GreatStack - All Right Reserved.
           </p>
@@ -81,10 +105,10 @@ const Footer = () => {
             <img src={assets.instagram_icon} alt='' />
             <img src={assets.linkedin_icon} alt='' />
           </div>
-        </div>
+        </motion.div>
 
       </div>
-    </div>
+    </motion.div>
   )
 }
 

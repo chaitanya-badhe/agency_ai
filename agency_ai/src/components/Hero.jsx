@@ -40,12 +40,25 @@ const Hero = () => {
         impact
       </motion.h1>
 
-      <motion.p className="text-sm sm:text-lg font-medium text-gray-500 dark:text-white/75 max-w-4/5 sm:max-w-lg pb-3">
+      <motion.p 
+      initial={{opacity:0 ,y:30}}
+      whileInView={{opacity:1 ,y:0}}
+      transition={{duration:0.5 , delay:1}}
+      viewport={{once:true}}
+      
+      className="text-sm sm:text-lg font-medium text-gray-500 dark:text-white/75 max-w-4/5 sm:max-w-lg pb-3">
         Creating meaningful connections and turning big ideas into
         interactive digital experiences.
       </motion.p>
 
-      <div className="relative w-full max-w-6xl">
+      <motion.div
+      initial={{opacity:0 ,y:0.9}}
+      whileInView={{opacity:1 ,scale:1}}
+      transition={{duration:0.6 , delay:2}}
+      viewport={{once:true}} 
+      
+      
+      className="relative w-full max-w-6xl">
         <img
           src={bgImage1}
           alt=""
@@ -57,7 +70,7 @@ const Hero = () => {
           alt="Hero"
           className="relative z-10 w-full max-w-6xl mx-auto"
         />
-      </div>
+      </motion.div>
     </div>
   );
 };
